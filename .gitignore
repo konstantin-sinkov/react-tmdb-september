@@ -2,8 +2,11 @@
 
 # dependencies
 /node_modules
+/.idea
 /.pnp
 .pnp.js
+package-lock.json
+/src/services/bearer_token.js
 
 # testing
 /coverage
