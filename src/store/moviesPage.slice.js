@@ -14,6 +14,18 @@ export const getMovies = createAsyncThunk(
     }
 )
 
+export const getGenres = createAsyncThunk(
+    'moviesPageSlice/getGenres',
+    async (_, {rejectWithValue}) => {
+        try {
+            const genres = await moviesService.getGenres();
+            return genres;
+        } catch (e) {
+            return rejectWithValue(e.message);
+        }
+    }
+)
+
 const moviesPageSlice = createSlice({
     name: 'moviesSlice',
     initialState: {
@@ -29,9 +41,15 @@ const moviesPageSlice = createSlice({
     extraReducers: {
         [getMovies.pending]: (state, action) => {
         },
+        [getGenres.pending]: (state, action) => {
+        },
         [getMovies.fulfilled]: (state, action) => {
             state.movies = action.payload;
+        },
+        [getGenres.fulfilled]: (state, action) => {
+            state.genres = action.payload;
         }
+        
     }
 });
 
