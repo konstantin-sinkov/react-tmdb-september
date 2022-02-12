@@ -1,11 +1,12 @@
 import React from 'react';
+import {Card} from "react-bootstrap";
 
-const PosterPreview = () => {
-  return (
-   <div>
-   
-   </div>
-  );
- }
+const PosterPreview = ({posterPath, movieId}) => {
+    return (
+        <div>
+            <Card.Img variant={"top"} src={`https://image.tmdb.org/t/p/w300${posterPath}`} />
+        </div>
+    );
+}
 
 export {PosterPreview};

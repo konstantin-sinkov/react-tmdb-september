@@ -6,14 +6,15 @@ import {Header} from "./components";
 import {MovieDetailsPage, MoviesPage} from "./pages";
 
 function App() {
+    //useEffect (theme) => dep [theme],
+    //generate dynamically className
     
     return (
         <div className={css.App}>
             <Routes>
                 <Route path={'/'} element={<Header/>}>
-                    <Route path={'movies'} element={<MoviesPage/>}>
-                        <Route path={':id'} element={<MovieDetailsPage/>} />
-                    </Route>
+                    <Route index path={'movies'} element={<MoviesPage/>} />
+                    <Route path={'movies/movie/:id'} element={<MovieDetailsPage />} />
                 </Route>
             </Routes>
         </div>
