@@ -4,9 +4,9 @@ import {moviesService} from "../services/movies.page.service";
 
 export const getMovies = createAsyncThunk(
     'moviesPageSlice/getMovies',
-    async (_, {rejectedWithValue}) => {
+    async (page, {rejectedWithValue}) => {
         try {
-            const movies = await moviesService.getMovies();
+            const movies = await moviesService.getMovies(page);
             return movies;
         } catch (e) {
             return rejectedWithValue(e.message);
@@ -46,31 +46,41 @@ const moviesPageSlice = createSlice({
         movies: [],
         genres: [],
         checkedFilm: null,
-        darkMode: false, //to themeSlice
+        isLoading: false,
         currentPage: 1,
-        totalPages: null
+        totalPages: null,
+        darkMode: false //to themeSlice
     },
     reducers: {
-        // getCheckedFilm(state, action) {
-        //     // console.log(`sdcsdc - ${action}`);
-        //     state.checkedFilm = action.payload;
-        // }
+        goToNextPage(state) {
+            state.currentPage = state.currentPage + 1;
+            // console.log(state.currentPage);
+            return state;
+        },
+        goToPreviousPage(state) {
+            state.currentPage = state.currentPage - 1;
+            return state;
+        }
     },
     extraReducers: {
-        [getMovies.pending]: (state, action) => {
-        },
-        [getGenres.pending]: (state, action) => {
+        [getMovies.pending]: (state) => {
+            state.isLoading = true;
         },
         [getMovieById.pending]: (state, action) => {
+            state.isLoading = true;
         },
         
         [getMovies.fulfilled]: (state, action) => {
-            state.movies = action.payload;
+            state.isLoading = false;
+            state.movies = action.payload.results;
+            state.totalPages = action.payload.total_pages;
         },
         [getGenres.fulfilled]: (state, action) => {
+            state.isLoading = false;
             state.genres = action.payload;
         },
         [getMovieById.fulfilled]: (state, action) => {
+            state.isLoading = false;
             state.checkedFilm = action.payload;
         }
     }
@@ -78,6 +88,6 @@ const moviesPageSlice = createSlice({
 
 const moviesPageReducer = moviesPageSlice.reducer;
 
-export const {} = moviesPageSlice.actions;
+export const {goToPreviousPage, goToNextPage} = moviesPageSlice.actions;
 
 export default moviesPageReducer;

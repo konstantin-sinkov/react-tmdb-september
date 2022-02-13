@@ -1,0 +1,16 @@
+.wrap {
+
+}
+
+.paginator_wrap {
+    display: flex;
+    justify-content: center;
+    transform: translateY(-125%);
+}
+
+.container_wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: space-evenly;
+    gap: 20px;
+}

@@ -1,0 +1,16 @@
+card {
+    min-width: 350px;
+    max-height: 550px;
+}
+
+.card-body {
+    height: 540px;
+}
+
+card > img {
+    height: 350px !important;
+}
+
+.card_item > a {
+    text-decoration: none;
+}
