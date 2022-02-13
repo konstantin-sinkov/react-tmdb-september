@@ -1,0 +1,15 @@
+.wrapper {
+    background-color: lightgray;
+}
+
+.wrapper__dark {
+    background-color: darkslategray;
+}
+
+.lightTheme_text {
+    color: #100b0b;
+}
+
+.darkTheme__text {
+    color: #eae4e4;
+}

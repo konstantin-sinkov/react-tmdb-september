@@ -7,3 +7,4 @@ export * from './PosterPreview/PosterPreview';
 export * from './UserInfo/UserInfoPage';
 export * from './Paginator/Paginator';
 export * from './Loader/Loader';
+export * from './StarRating/StarRating';

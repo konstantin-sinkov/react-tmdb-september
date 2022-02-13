@@ -10,7 +10,8 @@ import css from './MoviesList.module.css';
 const MoviesList = () => {
     //Add changing status status and <Loader component>
     const {movies, genres, isLoading, currentPage} = useSelector(state => state['moviesPageReducer']);
-    console.log()
+    const {darkMode} = useSelector(state => state['themeReducer']);
+    console.log(darkMode);
     
     const dispatch = useDispatch();
     
@@ -30,7 +31,7 @@ const MoviesList = () => {
     return (
         <div>
             {isLoading ? <Loader/> :
-                <div className={css.wrap}>
+                <div className={!darkMode ? css.wrap : css.wrap__dark}>
                     <div className={css.paginator_wrap}>
                         <Paginator toNextPage={toNextPage} toPrevPage={toPrevPage} page={currentPage}/>
                     </div>
@@ -40,6 +41,7 @@ const MoviesList = () => {
                                 key={movie.id}
                                 movie={movie}
                                 genres={genres}
+                                darkMode={darkMode}
                             />)}
                     </Container>
                 </div>

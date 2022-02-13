@@ -1,11 +1,17 @@
 .wrap {
+    background-color: lightgray;
+}
 
+.wrap__dark {
+    background-color: darkslategray;
 }
 
 .paginator_wrap {
-    display: flex;
-    justify-content: center;
-    transform: translateY(-125%);
+    /*display: flex;*/
+    /*justify-content: center;*/
+    transform: translateY(-120%);
+    width: max-content;
+    margin: 0 50%;
 }
 
 .container_wrap {

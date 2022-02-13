@@ -13,7 +13,7 @@ function App() {
     const {currentPage} = useSelector(state => state['moviesPageReducer']);
     
     return (
-        <div className={css.App}>
+        <div className={css}>
             <Routes>
                 <Route path={'/'} element={<Header/>}>
                     <Route index path={`movies`} element={<MoviesPage/>} />

@@ -49,7 +49,6 @@ const moviesPageSlice = createSlice({
         isLoading: false,
         currentPage: 1,
         totalPages: null,
-        darkMode: false //to themeSlice
     },
     reducers: {
         goToNextPage(state) {
@@ -66,7 +65,7 @@ const moviesPageSlice = createSlice({
         [getMovies.pending]: (state) => {
             state.isLoading = true;
         },
-        [getMovieById.pending]: (state, action) => {
+        [getMovieById.pending]: (state) => {
             state.isLoading = true;
         },
         

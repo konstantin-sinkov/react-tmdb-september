@@ -1,6 +1,7 @@
 card {
-    min-width: 350px;
-    max-height: 550px;
+    max-width: 350px;
+    margin-right: 0;
+    /*max-height: 850px;*/
 }
 
 .card-body {
@@ -13,4 +14,17 @@ card > img {
 
 .card_item > a {
     text-decoration: none;
+}
+
+.card_text__light {
+    color: #100b0b;
+}
+
+.card_text__dark {
+    color: #eae4e4;
+}
+
+.overview_text {
+    height: 150px;
+    overflow: hidden;
 }
