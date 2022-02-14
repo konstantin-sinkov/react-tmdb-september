@@ -1,6 +1,6 @@
 import React from 'react';
 import {NavLink, Outlet} from "react-router-dom";
-import {Button, Container, Nav, Navbar} from "react-bootstrap";
+import {Button, Container, Nav, Navbar, NavDropdown} from "react-bootstrap";
 import {useDispatch, useSelector} from "react-redux";
 
 import {UserInfo} from '../index';
@@ -20,22 +20,26 @@ const Header = () => {
             <Navbar
                 bg={!darkMode ? "light" : "dark"}
                 variant={!darkMode ? "light" : "dark"}
-                className={css.wrap}
+                className={"me-auto my-2 my-lg-0"}
+                style={{maxHeight: '100px'}}
             >
-                <div>
-                    <Container>
+                <Container>
+                <Navbar.Brand href={"https://www.themoviedb.org/?language=uk"}>TMDB</Navbar.Brand>
+                
+                    <Nav className={"me-auto"}>
                             <NavLink to={"/movies"}>Movies page</NavLink>
-                    </Container>
-                </div>
-    
-                <div>
-                    <Container>
-                        <Button variant={'secondary'} onClick={themeSwitch}>
+                            {/*DropdownGenres*/}
+                    </Nav>
+                    
+                    
+                    <Nav>
+                        <Button variant={'secondary'} onClick={themeSwitch} >
                             {!darkMode ? "Dark mode" : "Light mode"}
                         </Button>
                         <UserInfo/>
-                    </Container>
-                </div>
+                    </Nav>
+                </Container>
+                
                 
             </Navbar>
             
