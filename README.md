@@ -1,3 +1,17 @@
+#React pet project (like IMDB) on TMDB free API https://developers.themoviedb.org/3/getting-started/introduction
+Used react-router v6, redux-toolkit, react-bootstrap
+
+final branch - final_branch_1-0
+
+#implemented:
+1) Routing (moviesPage, movieDetailsPafe, moviesByGenrePage)
+2) Pagination
+3) StarRatings
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
