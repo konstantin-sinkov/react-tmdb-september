@@ -9,7 +9,7 @@
 .paginator_wrap {
     /*display: flex;*/
     /*justify-content: center;*/
-    transform: translateY(-120%);
+    transform: translateY(-142%) translateX(-75%);
     width: max-content;
     margin: 0 50%;
 }

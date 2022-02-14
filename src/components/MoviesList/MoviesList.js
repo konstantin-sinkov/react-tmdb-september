@@ -2,18 +2,20 @@ import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {Container} from "react-bootstrap";
 
-import {getGenres, getMovies, goToNextPage, goToPreviousPage} from "../../store";
+import {getGenres, getMovies, getMoviesByGenre, goToNextPage, goToPreviousPage} from "../../store";
 import {Loader, MoviesListCard, Paginator} from "../index";
 import css from './MoviesList.module.css';
 
 
 const MoviesList = () => {
     //Add changing status status and <Loader component>
-    const {movies, genres, isLoading, currentPage} = useSelector(state => state['moviesPageReducer']);
+    const {movies, genres, isLoading, currentPage, checkedGenreId} = useSelector(state => state['moviesPageReducer']);
     const {darkMode} = useSelector(state => state['themeReducer']);
-    console.log(darkMode);
+    // console.log(darkMode);
     
     const dispatch = useDispatch();
+    
+    // console.log(checkedGenreId);
     
     useEffect(() => {
         dispatch(getMovies(currentPage));
@@ -51,3 +53,9 @@ const MoviesList = () => {
 }
 
 export {MoviesList};
+
+// if (checkedGenreId) {
+//     dispatch(getMoviesByGenre(checkedGenreId));
+// } else {
+//     dispatch(getMovies(currentPage));
+// }

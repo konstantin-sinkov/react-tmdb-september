@@ -1,0 +1,22 @@
+/*.wrap {*/
+/*    padding: 0 10%;*/
+/*    display: flex;*/
+/*    justify-content: space-between !important;*/
+/*}*/
+
+.me-auto > a {
+    text-decoration: none;
+}
+
+.page_link {
+    display: block;
+    margin-top: 8px;
+    margin-right: 20px;
+}
+
+.darkMode_button {
+    display: block;
+    height: 38px;
+    margin-top: 10px;
+    margin-right: 20px;
+}

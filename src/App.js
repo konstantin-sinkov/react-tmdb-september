@@ -5,6 +5,7 @@ import css from './App.module.css';
 import {Header} from "./components";
 import {MovieDetailsPage, MoviesPage} from "./pages";
 import {useSelector} from "react-redux";
+import MoviesByGenrePage from "./pages/MoviesByGenrePage/MoviesByGenrePage";
 
 function App() {
     //useEffect (theme) => dep [theme],
@@ -16,8 +17,9 @@ function App() {
         <div className={css}>
             <Routes>
                 <Route path={'/'} element={<Header/>}>
-                    <Route index path={`movies`} element={<MoviesPage/>} />
+                    <Route path={`movies`} element={<MoviesPage/>} />
                     <Route path={'movies/movie/:id'} element={<MovieDetailsPage />} />
+                    <Route path={'movies/genre/:id'} element={<MoviesByGenrePage />} />
                 </Route>
             </Routes>
         </div>

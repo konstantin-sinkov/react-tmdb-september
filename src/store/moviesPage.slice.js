@@ -35,7 +35,20 @@ export const getMovieById = createAsyncThunk(
             // dispatch(getCheckedFilm({checkedMovie}));
         } catch (e) {
             console.log(e.response.data.detail);
-            return rejectWithValue(e.response.data.detail);
+            // return rejectWithValue(e.response.data.detail);
+        }
+    }
+)
+
+export const getMoviesByGenre = createAsyncThunk(
+    'moviesPageSlice/getMoviesByGenre',
+    async (checkedGenre, {rejectedWithValue}) => {
+        try {
+            const moviesByGenre = await moviesService.getMoviesByGenre(checkedGenre);
+            return moviesByGenre;
+        } catch (e) {
+            rejectedWithValue(e.message());
+            // return rejectWithValue(e.response.data.detail);
         }
     }
 )
@@ -49,6 +62,8 @@ const moviesPageSlice = createSlice({
         isLoading: false,
         currentPage: 1,
         totalPages: null,
+        checkedGenreId: null, //unnecessary state
+        moviesByGenre: []
     },
     reducers: {
         goToNextPage(state) {
@@ -59,7 +74,13 @@ const moviesPageSlice = createSlice({
         goToPreviousPage(state) {
             state.currentPage = state.currentPage - 1;
             return state;
+        },
+        setCheckedGenreId(state, action) {
+            // console.log(action.payload);
+            state.checkedGenreId = action.payload;
+            return state;
         }
+        
     },
     extraReducers: {
         [getMovies.pending]: (state) => {
@@ -81,12 +102,16 @@ const moviesPageSlice = createSlice({
         [getMovieById.fulfilled]: (state, action) => {
             state.isLoading = false;
             state.checkedFilm = action.payload;
+        },
+        [getMoviesByGenre.fulfilled]: (state, action) => {
+            state.moviesByGenre = action.payload.results;
+            // console.log(getMoviesByGenre);
         }
     }
 });
 
 const moviesPageReducer = moviesPageSlice.reducer;
 
-export const {goToPreviousPage, goToNextPage} = moviesPageSlice.actions;
+export const {goToPreviousPage, goToNextPage, setCheckedGenreId} = moviesPageSlice.actions;
 
 export default moviesPageReducer;
