@@ -15,8 +15,6 @@ const MoviesList = () => {
     
     const dispatch = useDispatch();
     
-    // console.log(checkedGenreId);
-    
     useEffect(() => {
         dispatch(getMovies(currentPage));
         dispatch(getGenres());
